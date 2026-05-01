@@ -1,91 +1,165 @@
 @import "../../app.scss";
 
-.contact {
-  height: 100%;
-  max-width: 1366px;
-  margin: auto;
-  display: flex;
-  align-items: center;
-  gap: 50px;
+.contact-section {
+  position: relative;
+  overflow: hidden;
+  padding: 120px 24px 140px;
+  background: linear-gradient(180deg, #0b0b1d 0%, #111132 100%);
+  color: #f8fafc;
 
   @include mobile {
-    width: 100%;
-    padding: 10px;
-    flex-direction: column;
+    padding: 80px 20px 100px;
   }
 
-  .textContainer {
-    flex: 1;
+  &::before {
+    content: "";
+    position: absolute;
+    top: -20%;
+    left: -10%;
+    width: 380px;
+    height: 380px;
+    border-radius: 50%;
+    background: rgba(49, 39, 90, 0.12);
+    filter: blur(50px);
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    right: -10%;
+    bottom: -15%;
+    width: 360px;
+    height: 360px;
+    border-radius: 50%;
+    background: rgba(124, 58, 237, 0.14);
+    filter: blur(60px);
+  }
+
+  .contact-container {
+    position: relative;
+    z-index: 1;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+  }
+
+  .contact-inner {
+    width: 100%;
     display: flex;
     flex-direction: column;
-    gap: 40px;
+    align-items: center;
+    text-align: center;
+    gap: 2.5rem;
+    color:#8a659c;
+  }
 
-    @include mobile {
-      gap: 20px;
-      text-align: center;
-      align-items: center;
-      margin-top: 70px;
-    }
+  .contact-heading {
+    max-width: 850px;
 
-    h1 {
-      font-size: 100px;
-      line-height: 88px;
+    h2 {
+      font-size: clamp(4.5rem, 5vw, 8rem);
+      line-height: 0.95;
+      letter-spacing: -0.04em;
+      margin: 0;
+      font-weight: 900;
 
-      @include mobile {
-        font-size: 36px;
+      span {
+        color: #c4b5fd;
+        font-style: italic;
+        font-family: "Georgia", serif;
       }
-    }
-
-    span {
-      font-weight: 300;
     }
   }
 
-  .formContainer {
-    flex: 1;
-    position: relative;
-    
-    @include mobile {
-      padding: 50px;
-      width: 100%;
+  .contact-email-wrap {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
+  .contact-email {
+    display: inline-block;
+    font-size: clamp(2rem, 4vw, 4rem);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: #8a659c;
+    border-bottom: 4px solid rgba(255, 255, 255, 0.12);
+    padding-bottom: 0.8rem;
+    transition: all 0.35s ease;
+
+    &:hover {
+      color: #c4b5fd;
+      border-color: #c4b5fd;
+      transform: scale(1.02);
+    }
+  }
+
+  .contact-socials {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.5rem;
+    margin-top: 1rem;
+  }
+
+  .contact-social {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    color: #f8fafc;
+    text-decoration: none;
+    transition: color 0.3s ease;
+
+    span {
+      font-size: 0.75rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      opacity: 0.7;
+      transition: opacity 0.3s ease;
+      color: #8a659c;
     }
 
+    &:hover {
+      color: #c4b5fd;
 
-    .phoneSvg {
-      stroke: orange;
-      position: absolute;
-      margin: auto;
-      z-index: -1;
+      .contact-social-icon {
+        border-color: #c4b5fd;
+        background: rgba(196, 181, 253, 0.18);
+        transform: translateY(-6px);
+      }
+
+      span {
+        opacity: 1;
+      }
+    }
+  }
+
+  .contact-social-icon {
+    width: 90px;
+    height: 90px;
+    border-radius: 2rem;
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    display: grid;
+    place-items: center;
+    background: rgba(255, 255, 255, 0.03);
+    transition: all 0.35s ease;
+
+    svg {
+      width: 34px;
+      height: 34px;
+    }
+  }
+
+  @include mobile {
+    .contact-social-icon {
+      width: 72px;
+      height: 72px;
     }
 
-    form {
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
-
-      input,
-      textarea {
-        padding: 20px;
-        background-color: transparent;
-        border: 1px solid white;
-        color: white;
-        border-radius: 5px;
-
-        @include mobile {
-          padding: 10px;
-        }
-      }
-
-      button {
-        padding: 20px;
-        border: none;
-        background-color: orange;
-        cursor: pointer;
-        font-weight: 500;
-        @include mobile {
-          padding: 10px;
-        }
-      }
+    .contact-social {
+      gap: 0.75rem;
     }
   }
 }

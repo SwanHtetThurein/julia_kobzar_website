@@ -1,116 +1,73 @@
-import { useRef } from "react";
 import "./services.scss";
-import { motion, useInView } from "framer-motion";
+import { motion } from "framer-motion";
 
-const variants = {
-  initial: {
-    x: -500,
-    y: 100,
-    opacity: 0,
-  },
-  animate: {
-    x: 0,
-    opacity: 1,
-    y: 0,
-    transition: {
-      duration: 1,
-      staggerChildren: 0.1,
-    },
-  },
-};
-
-const Services = () => {
-  const ref = useRef();
-
-  const isInView = useInView(ref, { margin: "-100px" });
-
+export default function Services() {
   return (
-    <motion.div
-      className="services"
-      variants={variants}
-      initial="initial"
-      // animate="animate"
-      // whileInView="animate"
-      ref={ref}
-      animate={"animate"}
-    >
-      <motion.div className="textContainer" variants={variants}>
-        <p>
-          I focus on helping your brand grow
-          <br /> and move forward
-        </p>
-        <hr />
-      </motion.div>
-      <motion.div className="titleContainer" variants={variants}>
-        <div className="title">
-          <img src="/people.webp" alt="" />
-          <h1>
-            <motion.b whileHover={{color:"orange"}}>Unique</motion.b> Ideas
-          </h1>
-        </div>
-        <div className="title">
-          <h1>
-            <motion.b whileHover={{color:"orange"}}>For Your</motion.b> Business.
-          </h1>
-          <button>WHAT WE DO?</button>
-        </div>
-      </motion.div>
-      <motion.div className="listContainer" variants={variants}>
-        <motion.div
-          className="box"
-          whileHover={{ background: "lightgray", color: "black" }}
-        >
-          <h2>Branding</h2>
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum
-            libero enim nisi aliquam consectetur expedita magni eius ex corrupti
-            animi! Ad nam pariatur assumenda quae mollitia libero repellat
-            explicabo maiores?
-          </p>
-          <button>Go</button>
-        </motion.div>
-        <motion.div
-          className="box"
-          whileHover={{ background: "lightgray", color: "black" }}
-        >
-          <h2>Branding</h2>
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum
-            libero enim nisi aliquam consectetur expedita magni eius ex corrupti
-            animi! Ad nam pariatur assumenda quae mollitia libero repellat
-            explicabo maiores?
-          </p>
-          <button>Go</button>
-        </motion.div>
-        <motion.div
-          className="box"
-          whileHover={{ background: "lightgray", color: "black" }}
-        >
-          <h2>Branding</h2>
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum
-            libero enim nisi aliquam consectetur expedita magni eius ex corrupti
-            animi! Ad nam pariatur assumenda quae mollitia libero repellat
-            explicabo maiores?
-          </p>
-          <button>Go</button>
-        </motion.div>
-        <motion.div
-          className="box"
-          whileHover={{ background: "lightgray", color: "black" }}
-        >
-          <h2>Branding</h2>
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum
-            libero enim nisi aliquam consectetur expedita magni eius ex corrupti
-            animi! Ad nam pariatur assumenda quae mollitia libero repellat
-            explicabo maiores?
-          </p>
-          <button>Go</button>
-        </motion.div>
-      </motion.div>
-    </motion.div>
-  );
-};
+    <div className="services about-section">
+      <div className="about-container">
+        
+        <div className="about-grid">
+          <motion.div
+            className="about-visual"
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 1 }}
+          >
+            <div className="about-image-card">
+              <img
+                src="/DSC_5039.jpg"
+                alt="Creative workspace"
+                className="about-image"
+                referrerPolicy="no-referrer"
+              />
+            </div>
 
-export default Services;
+            <motion.div
+              className="about-badge"
+              animate={{ y: [0, -10, 0] }}
+              transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+            >
+              <div className="about-badge-inner">
+                <div className="about-badge-icon">💼</div>
+                <div>
+                  <div className="about-badge-value">1+ Year</div>
+                  <div className="about-badge-label">Direct Broadcast Exp</div>
+                </div>
+              </div>
+            </motion.div>
+
+            <div className="about-shape about-shape-top" />
+            <div className="about-shape about-shape-bottom" />
+          </motion.div>
+
+          <motion.div
+            className="about-copy"
+            initial={{ opacity: 0, x: -40 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.8 }}
+          >
+            <span className="about-label">The Specialist</span>
+            {/* <h2 className="about-title">
+              A Passion For <br />
+              <span className="about-title-highlight">Visual Narrative.</span>
+            </h2> */}
+
+            <div className="about-paragraphs">
+              <p>
+                My journey in multimedia began with a deep fascination for how editing can transform raw moments into powerful stories. Currently based in <strong>Tampa, Florida</strong>, I serve as a full-time News Video Editor for <span className="text-highlight">WFLA-TV News Channel 8</span> and WTTA-TV The CW.
+              </p>
+              <p>
+                Professionalism in the fast-paced world of broadcast news is my standard. From my time as an intern at <span className="text-highlight">FOX13 Tampa Bay</span> to designing graphics for the Tampa Bay Arts & Education Network, I've honed a versatile skill set that spans technical editing, floor direction, and audio technique.
+              </p>
+              <p>
+                I thrive under tight deadlines, collaborating with producers to ensure that every frame serves the story. Whether it's cutting VOs, VO/SOTs, or full packages, my focus is always on high-quality content that resonates with the audience.
+              </p>
+            </div>
+          </motion.div>
+        </div>
+      </div>
+    </div>
+  );
+}

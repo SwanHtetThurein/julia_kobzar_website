@@ -1,80 +1,98 @@
 import "./hero.scss";
 import { motion } from "framer-motion";
 
-const textVariants = {
-  initial: {
-    x: -500,
-    opacity: 0,
-  },
-  animate: {
-    x: 0,
-    opacity: 1,
-    transition: {
-      duration: 1,
-      staggerChildren: 0.1,
-    },
-  },
-  scrollButton: {
-    opacity: 0,
-    y: 10,
-    transition: {
-      duration: 2,
-      repeat: Infinity,
-    },
-  },
-};
-const sliderVariants = {
-  initial: {
-    x: 0,
-  },
-  animate: {
-    x: "-220%",
-    transition: {
-      repeat: Infinity,
-      repeatType:"mirror",
-      duration: 20,
-    },
-  },
-};
-
 const Hero = () => {
   return (
     <div className="hero">
-      <div className="wrapper">
+      <motion.div
+        className="heroCircle heroCircleTop"
+        animate={{
+          scale: [1, 1.1, 1],
+          rotate: [0, 2, 0],
+        }}
+        transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
+      />
+      <motion.div
+        className="heroCircle heroCircleBottom"
+        animate={{
+          scale: [1, 1.15, 1],
+          rotate: [0, -2, 0],
+        }}
+        transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+      />
+
+      <div className="heroContent">
         <motion.div
-          className="textContainer"
-          variants={textVariants}
-          initial="initial"
-          animate="animate"
+          className="heroText"
+          initial={{ opacity: 0, x: -60 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
         >
-          <motion.h2 variants={textVariants}>HARVEY TYLER</motion.h2>
-          <motion.h1 variants={textVariants}>
-            Web developer and UI designer
-          </motion.h1>
-          <motion.div variants={textVariants} className="buttons">
-            <motion.button variants={textVariants}>
-              See the Latest Works
-            </motion.button>
-            <motion.button variants={textVariants}>Contact Me</motion.button>
+          <motion.div
+            className="heroBadge"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.3 }}
+          >
+            <span />
+            <p>Multimedia Specialist</p>
           </motion.div>
-          <motion.img
-            variants={textVariants}
-            animate="scrollButton"
-            src="/scroll.png"
-            alt=""
-          />
+
+          <h1>
+            Julia
+            <br />
+            <motion.span
+              initial={{ opacity: 0, skewX: 10 }}
+              animate={{ opacity: 1, skewX: 0 }}
+              transition={{ delay: 0.6, duration: 0.9 }}
+              className="heroAccentName"
+            >
+              Kobzar
+            </motion.span>
+          </h1>
+
+          <motion.p
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 0.85 }}
+            transition={{ delay: 1.1 }}
+          >
+            Videographer, Photographer, and News Editor for major television networks.
+          </motion.p>
+
+          <motion.div
+            className="heroActions"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 1.4 }}
+          >
+            <a href="#portfolio" className="primaryButton">
+              Explore Work
+            </a>
+            <a href="#contact" className="secondaryButton">
+              Get In Touch
+            </a>
+          </motion.div>
+        </motion.div>
+
+        <motion.div
+          className="heroVisual"
+          initial={{ opacity: 0, scale: 0.92 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
+        >
+          <div className="heroImageCard">
+            <img src="/hero2.png" alt="Julia Kobzar" />
+            <div className="heroImageCaption">
+              <p>Portfolio 2025</p>
+              <h4>Creating Impactful Visuals</h4>
+            </div>
+          </div>
         </motion.div>
       </div>
-      <motion.div
-        className="slidingTextContainer"
-        variants={sliderVariants}
-        initial="initial"
-        animate="animate"
-      >
-        Writer Content Creator Influencer
-      </motion.div>
-      <div className="imageContainer">
-        <img src="/hero.png" alt="" />
+
+      <div className="scrollHint">
+        <span>Scroll</span>
+        <div />
       </div>
     </div>
   );

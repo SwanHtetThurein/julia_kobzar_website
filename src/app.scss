@@ -1,5 +1,4 @@
 html {
-  scroll-snap-type: y mandatory;
   scroll-behavior: smooth;
 }
 
@@ -11,7 +10,7 @@ html {
 }
 
 body {
-  background-color: #0c0c1d;
+  background: linear-gradient(90deg, #15102a, #0d0718);
   color: lightgray;
 }
 
@@ -21,10 +20,14 @@ a {
 }
 
 section {
-  height: 100vh;
-  width: 100vw;
-  scroll-snap-align: center;
-  overflow: hidden;
+  width: 100%;
+  overflow: visible;
+  background: transparent;
+}
+
+section.services-section,
+section.portfolio-section {
+  min-height: auto;
 }
 
 @mixin mobile {

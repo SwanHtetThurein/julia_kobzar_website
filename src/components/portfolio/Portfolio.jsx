@@ -1,85 +1,191 @@
-import { useRef } from "react";
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { Youtube, Play, X } from "lucide-react";
+import { PROJECTS, GALLERY } from "../constants";
 import "./portfolio.scss";
-import { motion, useScroll, useSpring, useTransform } from "framer-motion";
 
-const items = [
-  {
-    id: 1,
-    title: "React Commerce",
-    img: "https://images.pexels.com/photos/18073372/pexels-photo-18073372/free-photo-of-young-man-sitting-in-a-car-on-a-night-street.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load",
-    desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores ab id ad nesciunt quo aut corporis modi? Voluptate, quos sunt dolorum facilis, id eum sequi placeat accusantium saepe eos laborum.",
-  },
-  {
-    id: 2,
-    title: "Next.js Blog",
-    img: "https://images.pexels.com/photos/18023772/pexels-photo-18023772/free-photo-of-close-up-of-a-person-holding-a-wristwatch.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load",
-    desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores ab id ad nesciunt quo aut corporis modi? Voluptate, quos sunt dolorum facilis, id eum sequi placeat accusantium saepe eos laborum.",
-  },
-  {
-    id: 3,
-    title: "Vanilla JS App",
-    img: "https://images.pexels.com/photos/6894528/pexels-photo-6894528.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load",
-    desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores ab id ad nesciunt quo aut corporis modi? Voluptate, quos sunt dolorum facilis, id eum sequi placeat accusantium saepe eos laborum.",
-  },
-  {
-    id: 4,
-    title: "Music App",
-    img: "https://images.pexels.com/photos/18540208/pexels-photo-18540208/free-photo-of-wood-landscape-water-hill.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
-    desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores ab id ad nesciunt quo aut corporis modi? Voluptate, quos sunt dolorum facilis, id eum sequi placeat accusantium saepe eos laborum.",
-  },
-];
+const getYouTubeId = (url) => {
+  const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|&v=)([^#&?]*).*/;
+  const match = url.match(regExp);
+  return match && match[2].length === 11 ? match[2] : null;
+};
 
-const Single = ({ item }) => {
-  const ref = useRef();
+export default function Portfolio() {
+  const [activeVideo, setActiveVideo] = useState(null);
 
-  const { scrollYProgress } = useScroll({
-    target: ref,
-  });
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+      },
+    },
+  };
 
-  const y = useTransform(scrollYProgress, [0, 1], [-300, 300]);
+  const itemVariants = {
+    hidden: { opacity: 0, y: 30, scale: 0.96 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      scale: 1,
+      transition: { duration: 0.55, ease: "easeOut" },
+    },
+  };
 
   return (
-    <section >
-      <div className="container">
-        <div className="wrapper">
-          <div className="imageContainer" ref={ref}>
-            <img src={item.img} alt="" />
-          </div>
-          <motion.div className="textContainer" style={{y}}>
-            <h2>{item.title}</h2>
-            <p>{item.desc}</p>
-            <button>See Demo</button>
+    <section id="portfolio" className="portfolio-section">
+      <div className="portfolio__container">
+        <div className="portfolio__intro">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-50px" }}
+            className="portfolio__intro-copy"
+          >
+            <span className="portfolio__eyebrow">
+              <Youtube size={14} /> Visual Stories
+            </span>
+            {/* <h2 className="portfolio__title">
+              Featured <br /> <span>Videos</span>
+            </h2> */}
+            <p className="portfolio__subtitle">
+              A curated collection of my most impactful broadcast news reels and creative media productions.
+            </p>
           </motion.div>
         </div>
+
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-50px" }}
+          className="portfolio__projects-grid"
+        >
+          {PROJECTS.map((item) => (
+            <motion.div
+              key={item.id}
+              variants={itemVariants}
+              whileHover={{ y: -8 }}
+              className="portfolio__project-card"
+            >
+              <div
+                className="portfolio__project-media"
+                onClick={() => item.videoUrl && setActiveVideo(item.videoUrl)}
+              >
+                <img
+                  src={item.thumbnail}
+                  alt={item.title}
+                  className="portfolio__project-thumb"
+                  referrerPolicy="no-referrer"
+                />
+                <div className="portfolio__project-overlay">
+                  <div className="portfolio__project-play">
+                    <Play size={24} />
+                  </div>
+                </div>
+              </div>
+
+              <div className="portfolio__project-content">
+                {/* <span className="portfolio__project-tag">
+                  <Youtube size={14} /> Production
+                </span> */}
+                <h3>{item.title}</h3>
+                <p>{item.description}</p>
+                <button
+                  onClick={() => item.videoUrl && setActiveVideo(item.videoUrl)}
+                  className="portfolio__project-button"
+                >
+                  Play 
+                </button>
+              </div>
+            </motion.div>
+          ))}
+        </motion.div>
+
+        <AnimatePresence>
+          {activeVideo && (
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className="portfolio__modal-backdrop"
+              onClick={() => setActiveVideo(null)}
+            >
+              <motion.div
+                initial={{ scale: 0.9, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                exit={{ scale: 0.9, opacity: 0 }}
+                className="portfolio__modal"
+                onClick={(e) => e.stopPropagation()}
+              >
+                <button
+                  className="portfolio__modal-close"
+                  onClick={() => setActiveVideo(null)}
+                >
+                  <X size={20} />
+                </button>
+                <iframe
+                  className="portfolio__modal-video"
+                  src={`https://www.youtube.com/embed/${getYouTubeId(activeVideo)}?autoplay=1`}
+                  title="YouTube video player"
+                  frameBorder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                />
+              </motion.div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+
+        <div className="portfolio__gallery-heading">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+          >
+            <span className="portfolio__eyebrow">Captures</span>
+            {/* <h3 className="portfolio__gallery-title">Media Gallery</h3> */}
+          </motion.div>
+        </div>
+
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="portfolio__gallery-grid"
+        >
+          {GALLERY.map((photo) => {
+            const sizeClasses = {
+              small: "portfolio__gallery-item--small",
+              wide: "portfolio__gallery-item--wide",
+              tall: "portfolio__gallery-item--tall",
+              large: "portfolio__gallery-item--large",
+            }[photo.size] || "portfolio__gallery-item--small";
+
+            return (
+              <motion.div
+                key={photo.id}
+                variants={itemVariants}
+                whileHover={{ scale: 0.98, zIndex: 10 }}
+                className={`portfolio__gallery-item ${sizeClasses}`}
+              >
+                <img
+                  src={photo.url}
+                  alt={photo.title}
+                  className="portfolio__gallery-image"
+                  referrerPolicy="no-referrer"
+                />
+                <div className="portfolio__gallery-overlay">
+                  {/* <p className="portfolio__gallery-label">Capture</p> */}
+                  {/* <p className="portfolio__gallery-title-text">{photo.title}</p> */}
+                </div>
+              </motion.div>
+            );
+          })}
+        </motion.div>
       </div>
     </section>
   );
-};
-
-const Portfolio = () => {
-  const ref = useRef();
-
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ["end end", "start start"],
-  });
-
-  const scaleX = useSpring(scrollYProgress, {
-    stiffness: 100,
-    damping: 30,
-  });
-
-  return (
-    <div className="portfolio" ref={ref}>
-      <div className="progress">
-        <h1>Featured Works</h1>
-        <motion.div style={{ scaleX }} className="progressBar"></motion.div>
-      </div>
-      {items.map((item) => (
-        <Single item={item} key={item.id} />
-      ))}
-    </div>
-  );
-};
-
-export default Portfolio;
+}
