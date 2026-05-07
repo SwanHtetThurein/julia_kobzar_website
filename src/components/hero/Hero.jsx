@@ -92,10 +92,10 @@ const Hero = () => {
         </motion.div>
       </div>
 
-      <div className="scrollHint">
+      {/* <div className="scrollHint">
         <span>Scroll</span>
         <div />
-      </div>
+      </div> */}
     </div>
   );
 };

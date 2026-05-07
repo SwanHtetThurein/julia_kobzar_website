@@ -284,77 +284,52 @@
   }
 
   .portfolio__gallery-grid {
-     // Use vw-based width to always fill most of the screen
-    width: min(2000px, calc(100vw - 4rem));
-    margin-left: 50%;
-    transform: translateX(-50%); // ← centers it regardless of parent container
-  
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 2.5rem;
-    padding: 0 2rem;
+      width: min(2000px, calc(100vw - 4rem));
+      margin-left: 50%;
+      transform: translateX(-50%);
+
+      columns: 3;              // ← 3 column masonry
+      column-gap: 2.5rem;
+      padding: 0 2rem;
   }
 
   @include tablet {
     .portfolio__gallery-grid {
-      grid-template-columns: repeat(2, 1fr);
-      gap: 2rem;
+      columns: 2;
+      column-gap: 2rem;
       padding: 0 1.5rem;
     }
   }
 
   @include mobile {
     .portfolio__gallery-grid {
-      grid-template-columns: 1fr;
-      gap: 1.75rem;
+      columns: 1;
+      column-gap: 0;
       padding: 0 1.25rem;
     }
   }
 
   .portfolio__gallery-item {
-    position: relative;
-    overflow: hidden;
+    break-inside: avoid;     // ← prevents a photo from splitting across columns
+    margin-bottom: 2.5rem;   // ← gap between photos vertically
     border-radius: 1.75rem;
-    box-shadow: 0 24px 80px rgba(15, 23, 42, 0.08);
-    // min-height: 300px;
-    // height: 300px;
-    min-height: unset;    // ← remove the fixed min-height
-    height: unset;        // ← remove the fixed height
-    aspect-ratio: 4 / 3; // ← grows and shrinks with column width
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.35s ease, box-shadow 0.35s ease;
   }
 
-  .portfolio__gallery-item--wide {
-    grid-column: span 1;
-    // height: 220px;
-    // min_height: 220px;
-    aspect-ratio: 16 / 9; // ← wider than it is tall
-    height: unset;
-    min-height: unset;
-  }
-
-  .portfolio__gallery-item--tall {
-    grid-row: span 2;
-    // min-height: 628px;
-    aspect-ratio: unset;  // ← let the 2-row span determine height
-    min-height: unset;
-  }
-
-  .portfolio__gallery-item--large {
-    grid-column: span 2;
-    grid-row: span 2;
-    min-height: 420px;
-  }
 
   .portfolio__gallery-image {
     width: 100%;
-    height: 100%;
+    height: auto;            // ← key: let each photo be its natural height
     object-fit: cover;
     display: block;
+    border-radius: 1.75rem;
     transition: transform 0.8s ease;
   }
 
   .portfolio__gallery-item:hover .portfolio__gallery-image {
-    transform: scale(1.08);
+    transform: scale(1.03);
   }
 
   .portfolio__gallery-item {

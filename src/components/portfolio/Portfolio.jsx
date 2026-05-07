@@ -161,34 +161,21 @@ export default function Portfolio() {
           viewport={{ once: true }}
           className="portfolio__gallery-grid"
         >
-          {GALLERY.map((photo) => {
-            const sizeClasses = {
-              small: "portfolio__gallery-item--small",
-              wide: "portfolio__gallery-item--wide",
-              tall: "portfolio__gallery-item--tall",
-              large: "portfolio__gallery-item--large",
-            }[photo.size] || "portfolio__gallery-item--small";
-
-            return (
-              <motion.div
-                key={photo.id}
-                variants={itemVariants}
-                whileHover={{ scale: 0.98, zIndex: 10 }}
-                className={`portfolio__gallery-item ${sizeClasses}`}
-              >
-                <img
-                  src={photo.url}
-                  alt={photo.title}
-                  className="portfolio__gallery-image"
-                  referrerPolicy="no-referrer"
-                />
-                <div className="portfolio__gallery-overlay">
-                  {/* <p className="portfolio__gallery-label">Capture</p> */}
-                  {/* <p className="portfolio__gallery-title-text">{photo.title}</p> */}
-                </div>
-              </motion.div>
-            );
-          })}
+          {GALLERY.map((photo) => (
+            <motion.div
+              key={photo.id}
+              variants={itemVariants}
+              whileHover={{ scale: 0.98 }}
+              className="portfolio__gallery-item"
+            >
+              <img
+                src={photo.url}
+                alt={photo.title}
+                className="portfolio__gallery-image"
+                referrerPolicy="no-referrer"
+              />
+            </motion.div>
+          ))}
         </motion.div>
       </div>
     </section>
