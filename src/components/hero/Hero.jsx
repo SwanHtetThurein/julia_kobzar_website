@@ -1,23 +1,19 @@
 import "./hero.scss";
 import { motion } from "framer-motion";
+const isMobile = window.innerWidth <= 768;
+
 
 const Hero = () => {
   return (
     <div className="hero">
       <motion.div
         className="heroCircle heroCircleTop"
-        animate={{
-          scale: [1, 1.1, 1],
-          rotate: [0, 2, 0],
-        }}
+        animate={isMobile ? {} : { scale: [1, 1.1, 1], rotate: [0, 2, 0] }}
         transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
       />
       <motion.div
         className="heroCircle heroCircleBottom"
-        animate={{
-          scale: [1, 1.15, 1],
-          rotate: [0, -2, 0],
-        }}
+        animate={isMobile ? {} : { scale: [1, 1.15, 1], rotate: [0, -2, 0] }}
         transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
       />
 
@@ -26,7 +22,7 @@ const Hero = () => {
           className="heroText"
           initial={{ opacity: 0, x: -60 }}
           animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+          transition={{ duration: isMobile ? 0.2 : 1, ease: [0.16, 1, 0.3, 1] }}
         >
           <motion.div
             className="heroBadge"

@@ -13,6 +13,11 @@
     border-radius: 9999px;
     filter: blur(110px);
     pointer-events: none;
+
+    @include mobile {
+      filter: blur(60px); // ← cheaper to render
+      opacity: 0.5;
+    }
   }
 
   .heroCircleTop {
@@ -68,7 +73,7 @@
         font-size: 0.75rem;
         letter-spacing: 0.35em;
         text-transform: uppercase;
-        font-weight: 900;
+        font-weight: 700;
         color: #8a659c;
       }
     }
@@ -150,7 +155,7 @@
     width: 100%;
     max-width: 720px;
     height: 720px;
-    border-radius: 3rem;
+    border-radius: 5rem;
     overflow: hidden;
     background: rgba(7, 1, 9, 0.04);
     box-shadow: 0 50px 120px rgba(30, 27, 75, 0.28);

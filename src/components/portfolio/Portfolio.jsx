@@ -4,6 +4,9 @@ import { Youtube, Play, X } from "lucide-react";
 import { PROJECTS, GALLERY } from "../constants";
 import "./portfolio.scss";
 
+const isMobile = window.innerWidth <= 768;
+
+
 const getYouTubeId = (url) => {
   const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|&v=)([^#&?]*).*/;
   const match = url.match(regExp);
@@ -18,7 +21,7 @@ export default function Portfolio() {
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.1,
+        staggerChildren: isMobile ? 0.03 : 0.1,
       },
     },
   };
