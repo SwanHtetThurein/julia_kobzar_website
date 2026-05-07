@@ -56,10 +56,10 @@ const Hero = () => {
             animate={{ opacity: 0.85 }}
             transition={{ delay: 1.1 }}
           >
-            Videographer, Photographer, and News Editor for major television networks.
+           Storytelling through compelling visuals. 
           </motion.p>
 
-          <motion.div
+          {/* <motion.div
             className="heroActions"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -71,7 +71,7 @@ const Hero = () => {
             <a href="#contact" className="secondaryButton">
               Get In Touch
             </a>
-          </motion.div>
+          </motion.div> */}
         </motion.div>
 
         <motion.div
@@ -82,11 +82,13 @@ const Hero = () => {
         >
           <div className="heroImageCard">
             <img src="/hero2.png" alt="Julia Kobzar" />
-            <div className="heroImageCaption">
+            {/* <div className="heroImageCaption">
               <p>Portfolio 2025</p>
               <h4>Creating Impactful Visuals</h4>
-            </div>
+            </div> */}
+            
           </div>
+
         </motion.div>
       </div>
 

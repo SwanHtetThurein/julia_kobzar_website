@@ -3,12 +3,12 @@
 .portfolio-section {
   position: relative;
   background: transparent;
-  padding: 120px 0 80px;
+  padding: 180px 0 180px;
   overflow: hidden;
   color: #f8fafc;
 
   @include mobile {
-    padding: 80px 0 60px;
+    padding: 120px 0 120px;
   }
 
   &::before,
@@ -82,23 +82,31 @@
   }
 
   .portfolio__projects-grid {
+    // Break out of the 1320px container, same as the gallery
+    width: min(2000px, calc(100vw - 4rem));
+    margin-left: 50%;
+    transform: translateX(-50%);
+
     display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 3rem;
-    margin-bottom: 7rem;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 3.5rem;
+    margin-bottom: 14rem;
+    padding: 0 2rem;
   }
 
   @include tablet {
     .portfolio__projects-grid {
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 2.75rem;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 3rem;
+      padding: 0 1.5rem;
     }
   }
 
   @include mobile {
     .portfolio__projects-grid {
       grid-template-columns: 1fr;
-      gap: 2.5rem;
+      gap: 2.75rem;
+      padding: 0 1.25rem;
     }
   }
 
@@ -263,7 +271,7 @@
   }
 
   .portfolio__gallery-heading {
-    margin: 4.5rem auto 2rem;
+    margin: 6rem auto 2.5rem;
     text-align: center;
     max-width: 720px;
   }
@@ -276,23 +284,29 @@
   }
 
   .portfolio__gallery-grid {
+     // Use vw-based width to always fill most of the screen
+    width: min(2000px, calc(100vw - 4rem));
+    margin-left: 50%;
+    transform: translateX(-50%); // ← centers it regardless of parent container
+  
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 2rem;
+    gap: 2.5rem;
+    padding: 0 2rem;
   }
 
   @include tablet {
     .portfolio__gallery-grid {
       grid-template-columns: repeat(2, 1fr);
-      gap: 1.75rem;
-      padding: 0 1rem;
+      gap: 2rem;
+      padding: 0 1.5rem;
     }
   }
 
   @include mobile {
     .portfolio__gallery-grid {
       grid-template-columns: 1fr;
-      gap: 1.25rem;
+      gap: 1.75rem;
       padding: 0 1.25rem;
     }
   }
@@ -302,19 +316,27 @@
     overflow: hidden;
     border-radius: 1.75rem;
     box-shadow: 0 24px 80px rgba(15, 23, 42, 0.08);
-    min-height: 300px;
-    height: 300px;
+    // min-height: 300px;
+    // height: 300px;
+    min-height: unset;    // ← remove the fixed min-height
+    height: unset;        // ← remove the fixed height
+    aspect-ratio: 4 / 3; // ← grows and shrinks with column width
   }
 
   .portfolio__gallery-item--wide {
     grid-column: span 1;
-    height: 220px;
-    min_height: 220px;
+    // height: 220px;
+    // min_height: 220px;
+    aspect-ratio: 16 / 9; // ← wider than it is tall
+    height: unset;
+    min-height: unset;
   }
 
   .portfolio__gallery-item--tall {
     grid-row: span 2;
-    min-height: 628px;
+    // min-height: 628px;
+    aspect-ratio: unset;  // ← let the 2-row span determine height
+    min-height: unset;
   }
 
   .portfolio__gallery-item--large {

@@ -23,19 +23,17 @@ export default function Services() {
               />
             </div>
 
-            <motion.div
+            {/* <motion.div
               className="about-badge"
               animate={{ y: [0, -10, 0] }}
               transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
             >
-              <div className="about-badge-inner">
-                <div className="about-badge-icon">💼</div>
-                <div>
-                  <div className="about-badge-value">1+ Year</div>
-                  <div className="about-badge-label">Direct Broadcast Exp</div>
-                </div>
-              </div>
-            </motion.div>
+              <img
+                src="/juliakid.jpg"
+                alt="Julia as a kid"
+                className="about-badge-photo"
+              />
+            </motion.div> */}
 
             <div className="about-shape about-shape-top" />
             <div className="about-shape about-shape-bottom" />
@@ -48,7 +46,7 @@ export default function Services() {
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 0.8 }}
           >
-            <span className="about-label">The Specialist</span>
+            <span className="about-label">About Me</span>
             {/* <h2 className="about-title">
               A Passion For <br />
               <span className="about-title-highlight">Visual Narrative.</span>
@@ -56,14 +54,17 @@ export default function Services() {
 
             <div className="about-paragraphs">
               <p>
-                My journey in multimedia began with a deep fascination for how editing can transform raw moments into powerful stories. Currently based in <strong>Tampa, Florida</strong>, I serve as a full-time News Video Editor for <span className="text-highlight">WFLA-TV News Channel 8</span> and WTTA-TV The CW.
+                Ever since I was a little kid, I’ve always loved storytelling and creating art, usually scribbling colored pencils and stickers on the wall. But things really took off when I got my hands on my dad’s camera and my own laptop at around 9 years old. That’s when I discovered my passion for using a camera and creating in general. Like many kids, I dreamed of becoming a famous YouTuber, and I even started making and editing my own YouTube videos.
               </p>
+              <br></br>
               <p>
-                Professionalism in the fast-paced world of broadcast news is my standard. From my time as an intern at <span className="text-highlight">FOX13 Tampa Bay</span> to designing graphics for the Tampa Bay Arts & Education Network, I've honed a versatile skill set that spans technical editing, floor direction, and audio technique.
+                This has lead me to focusing on digital storytelling throughout high school and college, and now I have over a year of experience at News Channel 8. In this year, I have edited thousands of videos including VOs, SOTs, and packages. My video editing skills developed quickly through this role and it made me realize that I want to continue with my passions and tell stories in any way I can. That can be through videography, photography, or mixed media artwork. I love it all.
               </p>
+              <br></br>
               <p>
-                I thrive under tight deadlines, collaborating with producers to ensure that every frame serves the story. Whether it's cutting VOs, VO/SOTs, or full packages, my focus is always on high-quality content that resonates with the audience.
+                Over the years, I’ve sharpened my skills in camera work, video editing, and tools like Adobe Premiere Pro, adding new techniques to my creative toolkit. My goal isn’t just to keep refining my craft, but also to push the boundaries and discover new ways of telling stories. I’m always excited to take on new challenges and find opportunities to bring stories to life in ways that engage and inspire.
               </p>
+              <br></br>
             </div>
           </motion.div>
         </div>

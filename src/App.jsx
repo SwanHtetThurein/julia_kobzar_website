@@ -20,7 +20,7 @@ const App = () => {
         <Services />
       </section>
       <section id="portfolio" className="portfolio-section">
-        <Parallax type="services" />
+        {/* <Parallax type="services" /> */}
         <Portfolio />
       </section>
       <section id="contact">

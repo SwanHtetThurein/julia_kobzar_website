@@ -49,9 +49,9 @@ export default function Portfolio() {
             {/* <h2 className="portfolio__title">
               Featured <br /> <span>Videos</span>
             </h2> */}
-            <p className="portfolio__subtitle">
-              A curated collection of my most impactful broadcast news reels and creative media productions.
-            </p>
+            {/* <p className="portfolio__subtitle">
+              A curated collection of m creative media productions.
+            </p> */}
           </motion.div>
         </div>
 
@@ -71,7 +71,12 @@ export default function Portfolio() {
             >
               <div
                 className="portfolio__project-media"
-                onClick={() => item.videoUrl && setActiveVideo(item.videoUrl)}
+                onClick={() => {
+                  if (!item.videoUrl) return;
+                  item.openInNewTab
+                    ? window.open(item.videoUrl, "_blank")
+                    : setActiveVideo(item.videoUrl);
+                }}
               >
                 <img
                   src={item.thumbnail}

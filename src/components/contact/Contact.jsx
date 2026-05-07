@@ -3,10 +3,9 @@ import { Linkedin, Instagram, Twitter, Youtube } from "lucide-react";
 import "./contact.scss";
 
 const socials = [
-  { icon: <Linkedin size={24} />, name: "LinkedIn", url: "https://linkedin.com/in/juliakobzar" },
-  { icon: <Instagram size={24} />, name: "Instagram", url: "https://instagram.com" },
-  { icon: <Twitter size={24} />, name: "X (Twitter)", url: "https://twitter.com" },
-  { icon: <Youtube size={24} />, name: "YouTube", url: "https://youtube.com" },
+  { icon: <Linkedin size={24} />, name: "LinkedIn", url: "https://www.linkedin.com/in/julia-kobzar-3a2ab0280/" },
+  // { icon: <Instagram size={24} />, name: "Instagram", url: "https://instagram.com" },
+  // { icon: <Youtube size={24} />, name: "YouTube", url: "https://youtube.com" },
 ];
 
 export default function Contact() {
@@ -32,7 +31,7 @@ export default function Contact() {
             transition={{ delay: 0.3, duration: 0.8 }}
           >
             <a className="contact-email" href="mailto:contact@juliakobzar.com">
-              contact@juliakobzar.com
+              juliakobzar9@gmail.com
             </a>
           </motion.div>
 
