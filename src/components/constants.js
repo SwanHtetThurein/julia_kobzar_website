@@ -75,7 +75,7 @@ export const GALLERY = [
   { id: 11, url: "/photo_gallery/DSC_4657.jpg"},
   { id: 12, url: "/photo_gallery/tall2.jpg" },
   { id: 13, url: "/photo_gallery/DSC_4647.jpg" },
-  { id: 14, url: "/photo_gallery/flowers.JPG" },
+  { id: 14, url: "/photo_gallery/flowers.jpg" },
   { id: 15, url: "/photo_gallery/DSC_4545.jpg" },
   // { id: 16, url: "/photo_gallery/DSC_6640.jpg" },
   {id : 17, url: "/photo_gallery/wide2.jpg"},

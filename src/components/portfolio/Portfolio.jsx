@@ -172,6 +172,7 @@ export default function Portfolio() {
                 src={photo.url}
                 alt={photo.title}
                 className="portfolio__gallery-image"
+                loading = "lazy"
                 referrerPolicy="no-referrer"
               />
             </motion.div>

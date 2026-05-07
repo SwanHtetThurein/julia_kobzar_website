@@ -81,7 +81,7 @@ const Hero = () => {
           transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
         >
           <div className="heroImageCard">
-            <img src="/hero2.png" alt="Julia Kobzar" />
+            <img src="/hero2.webp" alt="Julia Kobzar" />
             {/* <div className="heroImageCaption">
               <p>Portfolio 2025</p>
               <h4>Creating Impactful Visuals</h4>
