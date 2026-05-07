@@ -312,7 +312,7 @@
   .portfolio__gallery-item {
     break-inside: avoid;     // ← prevents a photo from splitting across columns
     margin-bottom: 2.5rem;   // ← gap between photos vertically
-    border-radius: 1.75rem;
+    border-radius: 0.25rem;
     overflow: hidden;
     cursor: pointer;
     transition: transform 0.35s ease, box-shadow 0.35s ease;
@@ -324,7 +324,7 @@
     height: auto;            // ← key: let each photo be its natural height
     object-fit: cover;
     display: block;
-    border-radius: 1.75rem;
+    border-radius: 0.25rem;
     transition: transform 0.8s ease;
   }
 
