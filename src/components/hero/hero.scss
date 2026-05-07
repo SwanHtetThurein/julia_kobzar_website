@@ -151,17 +151,21 @@
     max-width: 720px;
     height: 720px;
     border-radius: 3rem;
-    overflow: visible;
+    overflow: hidden;
     background: rgba(7, 1, 9, 0.04);
     box-shadow: 0 50px 120px rgba(30, 27, 75, 0.28);
   }
 
   .heroImageCard img {
     position: absolute;
-    top: -16%;
-    left: -16%;
-    width: 132%;
-    height: 132%;
+    // top: -16%;
+    // left: -16%;
+    // width: 132%;
+    // height: 132%;
+    top: 0;       // ← was -16%
+    left: 0;      // ← was -16%
+    width: 100%;  // ← was 132%
+    height: 100%; // ← was 132%
     object-fit: cover;
     border-radius: 3rem;
     transform: scale(1.05);
@@ -242,6 +246,10 @@
 
   @include mobile {
     padding-top: 80px;
+
+    .heroImageCard {
+        height: 420px; // ← was 720px, too tall for mobile
+    }
 
     .heroContent {
       grid-template-columns: 1fr;
